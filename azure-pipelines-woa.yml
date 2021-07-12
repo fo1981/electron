@@ -67,7 +67,7 @@ steps:
     node script/yarn test --onlyPrepForRunning    
     cd ..
     # CalculateNativeWinOcclusion is disabled due to https://bugs.chromium.org/p/chromium/issues/detail?id=1139022
-    Get-ChildItem -File electron\spec-main\*-spec.ts | Foreach { out\Default\electron.exe electron\spec-main --trace-uncaught --enable-logging --files $_.fullname --disable-features=CalculateNativeWinOcclusion }    
+    for %f in (electron\spec-main\*-spec.ts) do out\Default\electron.exe electron\spec-main --trace-uncaught --enable-logging --files %f --disable-features=CalculateNativeWinOcclusion
   displayName: 'Run Electron Main process tests'
   env:
     ELECTRON_ENABLE_STACK_DUMPING: true
